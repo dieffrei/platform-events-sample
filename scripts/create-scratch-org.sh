@@ -1,0 +1,1 @@
+sfdx force:org:create -f config/project-scratch-def.json -a playground-dev-org --wait 30 --json

@@ -1,0 +1,1 @@
+sfdx force:auth:jwt:grant --clientid 3MVG9mclR62wycM2A0olAK5nX2oAHDhVnGhIZ4wdBgGkLGiXW.jEt7.As4OEAHCUqKhm0kwrGxElOjGTcj1zX --jwtkeyfile jwt/server.key --username df@dx.com --setdefaultdevhubusername --setalias playground-devhub
