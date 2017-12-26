@@ -1,17 +1,19 @@
 public class Opportunityz {
-    
+    public String name;
+    public Id id;
     public Id salesPersonId;
     public String salesPersonName;
-
     public Id accountId;
     public String accountName;
-    
     public Date closeDate;
-    
-    private OpportunityRepository repository;
+    public String stageName;
+    public List<OpportunityLineItemz> items;
+
+    private transient OpportunityRepository repository;
     
     public Opportunityz(){
 		this.repository = new OpportunityRepository(); 
+        this.items = new List<OpportunityLineItemz>();
     }
     
     public Opportunityz(Id opportunityId) {
@@ -25,11 +27,19 @@ public class Opportunityz {
     }
     
     public Opportunityz buildWith(Opportunity record) {
+        this.id = record.Id;
+        this.name = record.Name;
         this.salesPersonId = record.Salesperson__c;
         this.salesPersonName = record.Salesperson__r.Name;
         this.accountId = record.AccountId;
         this.accountName = record.Account.Name;
         this.closeDate = record.CloseDate;
+        this.stageName = record.StageName;
+
+        for (OpportunityLineItem item : record.OpportunityLineItems) {
+            this.items.add(new OpportunityLineItemz(item));
+        }
+            
         return this;
     }
 
@@ -38,10 +48,10 @@ public class Opportunityz {
     }
     
     public Opportunityz dispatch() {
-        Opportunity__e evt = new Opportunity__e();
+        OpportunityStatus__e evt = new OpportunityStatus__e();
         evt.Payload__c = JSON.serialize(this);
         EventBus.publish(evt);
-        return this;
+        return null;
     }
     
 }

@@ -2,6 +2,6 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <deploymentStatus>Deployed</deploymentStatus>
     <eventType>StandardVolume</eventType>
-    <label>Opportunity</label>
-    <pluralLabel>Opportunity</pluralLabel>
+    <label>Opportunity Status</label>
+    <pluralLabel>Opportunities Status</pluralLabel>
 </CustomObject>

@@ -14,6 +14,7 @@ public with sharing class OpportunityRepository implements Repository {
                 Amount, 
                 AccountId, 
                 Account.Name,
+                CloseDate,
                 (SELECT Id, 
                  	Name, 
                  	Product2Id, 
