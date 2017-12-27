@@ -48,8 +48,10 @@ public class Opportunityz {
     }
     
     public Opportunityz dispatch() {
-        OpportunityStatus__e evt = new OpportunityStatus__e();
+        OpportunitySubmitted__e evt = new OpportunitySubmitted__e();
         evt.Payload__c = JSON.serialize(this);
+        evt.OpportunityId__c = this.id;
+        evt.Status__c = this.stageName;
         EventBus.publish(evt);
         return null;
     }
